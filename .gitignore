@@ -1,0 +1,18 @@
+# Python ignores this file name conventionally.
+# Exclude Python virtual environments, caches, and model binaries
+.venv/
+venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# macOS
+.DS_Store
+
+# Model artifacts
+models/
+*.keras
+
+# Logs
+logs/
