@@ -123,26 +123,27 @@ def main() -> int:
 
     args = parser.parse_args()
 
-    if args.cmd == "train":
-        save_path: Path = args.save
-        if args.use_existing and save_path.exists():
-            print(f"Model istnieje, pomijam trening: {save_path}")
-        else:
-            train(save_path, args.epochs)
-        evaluate(save_path)
-        return 0
+    match args.cmd:
+        case "train":
+            save_path: Path = args.save
+            if args.use_existing and save_path.exists():
+                print(f"Model istnieje, pomijam trening: {save_path}")
+            else:
+                train(save_path, args.epochs)
+            evaluate(save_path)
+            return 0
 
-    if args.cmd == "evaluate":
-        evaluate(args.model)
-        return 0
+        case "evaluate":
+            evaluate(args.model)
+            return 0
 
-    if args.cmd == "predict":
-        predict(args.model, args.image)
-        return 0
+        case "predict":
+            predict(args.model, args.image)
+            return 0
 
-    if args.cmd == "cpu-test":
-        cpu_test()
-        return 0
+        case "cpu-test":
+            cpu_test()
+            return 0
 
     return 0
 
