@@ -1,1 +1,3 @@
-# KNO_cwiczenia
+# KNO ćwiczenia
+
+Autor: s27444
