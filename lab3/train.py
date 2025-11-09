@@ -1,20 +1,28 @@
+from models import model_deep, model_simple
 from utils.data_loader import load_and_prepare_data
 from utils.plot_utils import plot_histories
-from models import model_simple, model_deep
+
 
 def train_models():
-    url = "https://archive.ics.uci.edu/ml/machine-learning-databases/wine/wine.data"
-    X_train, X_test, y_train, y_test, scaler, encoder, columns = load_and_prepare_data(url)
+    local_data_path = "data/wine.data"
+    _, _, _, _, scaler, encoder, columns = load_and_prepare_data(local_data_path)
+    X_train, X_test, y_train, y_test, scaler, encoder, columns = load_and_prepare_data(
+        local_data_path
+    )
 
     print(">>> Trening Modelu 1 (prosty)...")
     model1 = model_simple.build_model(X_train.shape[1])
-    history1 = model1.fit(X_train, y_train, validation_split=0.2, epochs=50, batch_size=16, verbose=0)
+    history1 = model1.fit(
+        X_train, y_train, validation_split=0.2, epochs=50, batch_size=16, verbose=0
+    )
 
     print(">>> Trening Modelu 2 (złożony)...")
     model2 = model_deep.build_model(X_train.shape[1])
-    history2 = model2.fit(X_train, y_train, validation_split=0.2, epochs=50, batch_size=16, verbose=0)
+    history2 = model2.fit(
+        X_train, y_train, validation_split=0.2, epochs=50, batch_size=16, verbose=0
+    )
 
-    plot_histories([history1, history2], ['Model prosty', 'Model złożony'])
+    plot_histories([history1, history2], ["Model prosty", "Model złożony"])
 
     acc1 = model1.evaluate(X_test, y_test, verbose=0)[1]
     acc2 = model2.evaluate(X_test, y_test, verbose=0)[1]

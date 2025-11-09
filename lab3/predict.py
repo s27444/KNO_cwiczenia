@@ -1,7 +1,10 @@
 import argparse
+
 import numpy as np
 from tensorflow.keras.models import load_model
+
 from utils.data_loader import load_and_prepare_data
+
 
 def predict_wine():
     parser = argparse.ArgumentParser(description="Wine Class Predictor")
@@ -11,7 +14,7 @@ def predict_wine():
 
     # 🔹 Tworzymy argumenty CLI dla wszystkich cech wina
     for feature in columns[1:]:
-        parser.add_argument(f'--{feature}', type=float, required=True)
+        parser.add_argument(f"--{feature}", type=float, required=True)
 
     args = parser.parse_args()
 
