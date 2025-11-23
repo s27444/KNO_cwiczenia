@@ -1,28 +1,45 @@
 import argparse
 
 import numpy as np
+import pickle
 from tensorflow.keras.models import load_model
-
-from utils.data_loader import load_and_prepare_data
-
 
 def predict_wine():
     parser = argparse.ArgumentParser(description="Wine Class Predictor")
 
-    local_data_path = "data/wine.data"
-    _, _, _, _, scaler, encoder, columns = load_and_prepare_data(local_data_path)
+    with open("scaler.pkl", "rb") as f:
+        scaler = pickle.load(f)
 
-    # 🔹 Tworzymy argumenty CLI dla wszystkich cech wina
+    with open("encoder.pkl", "rb") as f:
+        encoder = pickle.load(f)
+
+    # Stałe nazwy kolumn
+    columns = [
+        "class",
+        "Alcohol",
+        "Malic_acid",
+        "Ash",
+        "Alcalinity_of_ash",
+        "Magnesium",
+        "Total_phenols",
+        "Flavanoids",
+        "Nonflavanoid_phenols",
+        "Proanthocyanins",
+        "Color_intensity",
+        "Hue",
+        "OD280/OD315_of_diluted_wines",
+        "Proline",
+    ]
+
+    # Tworzymy argumenty CLI dla 13 cech
     for feature in columns[1:]:
         parser.add_argument(f"--{feature}", type=float, required=True)
 
     args = parser.parse_args()
 
-    # 🔹 Przygotowanie wejścia użytkownika
     input_data = np.array([[getattr(args, f) for f in columns[1:]]])
     input_scaled = scaler.transform(input_data)
 
-    # 🔹 Wczytanie wytrenowanego modelu
     model = load_model("best_model.h5")
     prediction = model.predict(input_scaled)
     class_idx = np.argmax(prediction)
