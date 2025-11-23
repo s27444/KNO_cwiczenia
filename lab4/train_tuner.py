@@ -54,8 +54,8 @@ def train_tuner():
     tuner = RandomSearch(
         build_model_hp,
         objective='val_accuracy',
-        max_trials=10,
-        executions_per_trial=2,
+        max_trials=3,
+        executions_per_trial=1,
         directory='tuner_results',
         project_name='wine_classification'
     )
