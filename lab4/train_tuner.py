@@ -60,7 +60,7 @@ def train_tuner():
         project_name='wine_classification'
     )
 
-    tuner.search(X_train_norm, y_train, epochs=50, validation_split=0.2, batch_size=16)
+    tuner.search(X_train_norm, y_train, epochs=20, validation_split=0.2, batch_size=16)
 
     best_model = tuner.get_best_models(1)[0]
     best_hp = tuner.get_best_hyperparameters(1)[0]
