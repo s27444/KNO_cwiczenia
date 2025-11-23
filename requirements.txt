@@ -1,5 +1,15 @@
-tensorflow>=2.16
-pillow>=10.0
-black>=24.0
-isort>=5.13
-numpy>=1.24
+# Framework uczenia maszynowego
+tensorflow
+
+# Obsługa obrazów i kompatybilność z TensorFlow
+pillow
+
+# Narzędzia do formatowania kodu
+black
+isort
+
+# Biblioteki numeryczne i ML
+numpy
+scikit-learn
+pandas
+matplotlib
