@@ -1,8 +1,9 @@
 import argparse
+import pickle
 
 import numpy as np
-import pickle
 from tensorflow.keras.models import load_model
+
 
 def predict_wine():
     parser = argparse.ArgumentParser(description="Wine Class Predictor")

@@ -1,13 +1,15 @@
+import pickle
+
 from models import model_deep, model_simple
 from utils.data_loader import load_and_prepare_data
 from utils.plot_utils import plot_histories
-import pickle
 
 
 def train_models():
     local_data_path = "data/wine.data"
-    X_train, X_test, y_train, y_test, scaler, encoder, columns = \
-        load_and_prepare_data(local_data_path)
+    X_train, X_test, y_train, y_test, scaler, encoder, columns = load_and_prepare_data(
+        local_data_path
+    )
 
     print(">>> Trening Modelu 1 (prosty)...")
     model1 = model_simple.build_model(X_train.shape[1])
