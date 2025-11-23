@@ -1,5 +1,6 @@
 # Framework uczenia maszynowego
 tensorflow
+keras-tuner
 
 # Obsługa obrazów i kompatybilność z TensorFlow
 pillow
