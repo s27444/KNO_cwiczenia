@@ -17,3 +17,6 @@ __pycache__/
 
 # Logs
 logs/
+
+# Outputs (wyniki treningu - metryki)
+outputs/
