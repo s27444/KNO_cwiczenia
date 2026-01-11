@@ -81,7 +81,7 @@ def predict_image(model_path: Path, image_path: Path):
     print(f"Pewność: {confidence:.4f}")
 
 
-def predict_wine():
+def predict_fashion():
     """Funkcja do wywołania z main.py - parsuje argumenty"""
     import argparse
 
@@ -107,7 +107,7 @@ def main():
         print("Domyślny model: models/fashion_mnist_best.keras", file=sys.stderr)
         sys.exit(1)
 
-    predict_wine()
+    predict_fashion()
 
 
 if __name__ == "__main__":
