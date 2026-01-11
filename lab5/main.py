@@ -1,7 +1,7 @@
 import argparse
 import sys
 
-from predict import predict_wine
+from predict import predict_fashion
 from train import train_models
 
 
@@ -18,7 +18,6 @@ def main():
     args, unknown = parser.parse_known_args()
 
     if args.mode == "train":
-        # Proste parsowanie argumentów dla treningu
         epochs = 10
         use_augmentation = False
 
@@ -37,10 +36,9 @@ def main():
         train_models(epochs=epochs, use_augmentation=use_augmentation)
 
     elif args.mode == "predict":
-        # Przekazujemy argumenty do predict.py (podobnie jak w lab3/lab4)
         sys.argv = [sys.argv[0]] + unknown
         print("🔮 Tryb predykcji...")
-        predict_wine()
+        predict_fashion()
 
 
 if __name__ == "__main__":
